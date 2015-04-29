@@ -26,10 +26,10 @@ Example role include in play:
 
 Variable declaration:
 
-	mount:
-	 - src: "someserver:/share/vol1"
-	   dest: /mounts/vol1
-	   fstype: nfs
+  mount:
+   - src: "someserver:/share/vol1"
+     dest: /mounts/vol1
+     fstype: nfs
    - src: "//someserver/Awesome/Share"
      dest: /mounts/Share
      opts: "uid=user1,user=user1,password=123"
