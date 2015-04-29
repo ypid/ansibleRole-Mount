@@ -1,0 +1,28 @@
+---
+- name: Debian | Install packages for nfs
+  apt: >
+   name=nfs-common
+   state=latest
+   update_cache=yes
+  when: item.fstype == "nfs"
+  with_items: mount
+
+- name: Debian | Install packages for cifs
+  apt: >
+   name=cifs-utils
+   state=latest
+   update_cache=yes
+  when: item.fstype == "cifs"
+  with_items: mount
+
+- name: Debian | mount devices
+  mount: >
+   dump={{item.dump|default(omit)}}
+   fstab={{item.fstab|default("/etc/fstab")}}
+   fstype={{ item.fstype }}
+   name={{ item.dest }}
+   src={{ item.src }}
+   opts={{item.opts|default(omit)}}
+   passno={{item.passno|default(omit)}}
+   state={{ item.state|default("mounted")}}
+  with_items: mount
