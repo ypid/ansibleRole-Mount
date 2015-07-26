@@ -2,6 +2,10 @@
 
 # "Global" mounts
 mount_list:
+  # - src: 'tmpfs'
+  #   dest: '/tmp'
+  #   fstype: 'tmpfs'
+  #   opts: 'nodev,nosuid,size=50%'
 
 # "Host group" mounts
 mount_group_list:

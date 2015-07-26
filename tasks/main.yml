@@ -38,10 +38,7 @@
   file:
     path: '{{ item.dest }}'
     state: 'directory'
-    owner: 'root'
-    group: 'root'
-    mode: '0755'
-  when: (item.dest is string and item.state == 'present')
+  when: (item.state is string and item.state == 'present')
   with_flattened:
     - mount_list
     - mount_group_list
