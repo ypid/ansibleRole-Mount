@@ -17,3 +17,32 @@
 #- name: Include Suse specific tasks
 #  include: Suse.yml
 #  when: ansible_os_family == 'Suse'
+
+- name: mount devices
+  mount:
+   dump: '{{ item.dump|default(omit) }}'
+   fstab: '{{ item.fstab|default("/etc/fstab") }}'
+   fstype: '{{ item.fstype }}'
+   name: '{{ item.dest }}'
+   src: '{{ item.src }}'
+   opts: '{{ item.opts|default(omit) }}'
+   passno: '{{ item.passno|default(omit) }}'
+   state: '{{ item.state|default("mounted") }}'
+  when: (item.src is string)
+  with_flattened:
+    - mount_list
+    - mount_group_list
+    - mount_host_list
+
+- name: Ensure mount directories exist when manually mounted
+  file:
+    path: '{{ item.dest }}'
+    state: 'directory'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+  when: (item.dest is string and item.state == 'present')
+  with_flattened:
+    - mount_list
+    - mount_group_list
+    - mount_host_list
