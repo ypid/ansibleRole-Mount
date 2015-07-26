@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Tal Lannder
-  description: 
+  description:
   #company: your company (optional)
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -17,7 +17,7 @@ galaxy_info:
   min_ansible_version: 1.2
   #
   # Below are all platforms currently available. Just uncomment
-  # the ones that apply to your role. If you don't see your 
+  # the ones that apply to your role. If you don't see your
   # platform on this list, let us know and we'll get it added!
   #
   platforms:
@@ -74,15 +74,15 @@ galaxy_info:
   #  - 9.2
   - name: Ubuntu
     versions:
-  #  - all
-  #  - lucid
-  #  - maverick
-  #  - natty
-  #  - oneiric
-  #  - precise
-  #  - quantal
-  #  - raring
-  #  - saucy
+    - all
+    # - lucid
+    # - maverick
+    # - natty
+    # - oneiric
+    # - precise
+    # - quantal
+    # - raring
+    # - saucy
     - trusty
   #- name: SLES
   #  versions:
@@ -97,13 +97,13 @@ galaxy_info:
   #  versions:
   #  - all
   #  - any
-  #- name: Debian
-  #  versions:
-  #  - all
-  #  - etch
-  #  - lenny
-  #  - squeeze
-  #  - wheezy
+  - name: Debian
+    versions:
+    - all
+    # - etch
+    # - lenny
+    # - squeeze
+    # - wheezy
   #
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.

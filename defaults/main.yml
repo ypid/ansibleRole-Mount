@@ -1,0 +1,16 @@
+---
+
+# "Global" mounts
+mount_list:
+
+# "Host group" mounts
+mount_group_list:
+
+# "Host" mounts
+mount_host_list:
+
+
+mount_packages:
+  Debian:
+    nfs: 'nfs-common'
+    cifs: 'cifs-utils'

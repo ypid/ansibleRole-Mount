@@ -2,11 +2,11 @@
 - name: Check for supported operating system on target
   fail:
     msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
-  when: ansible_os_family not in ['Debian']
+  when: ansible_os_family not in ['Debian', 'Ubuntu']
 
 - name: Include Debian specific tasks
   include: Debian.yml
-  when: mount is defined and ansible_os_family == 'Debian'
+  when: ansible_os_family in ['Debian', 'Ubuntu']
 
 # ToDo
 #
