@@ -20,14 +20,14 @@
 
 - name: mount devices
   mount:
-   dump: '{{ item.dump|default(omit) }}'
-   fstab: '{{ item.fstab|default("/etc/fstab") }}'
-   fstype: '{{ item.fstype }}'
-   name: '{{ item.dest }}'
-   src: '{{ item.src }}'
-   opts: '{{ item.opts|default(omit) }}'
-   passno: '{{ item.passno|default(omit) }}'
-   state: '{{ item.state|default("mounted") }}'
+    dump: '{{ item.dump|default(omit) }}'
+    fstab: '{{ item.fstab|default("/etc/fstab") }}'
+    fstype: '{{ item.fstype }}'
+    name: '{{ item.dest }}'
+    src: '{{ item.src }}'
+    opts: '{{ item.opts|default(omit) }}'
+    passno: '{{ item.passno|default(omit) }}'
+    state: '{{ item.state|default("mounted") }}'
   when: (item.src is string)
   with_flattened:
     - mount_list

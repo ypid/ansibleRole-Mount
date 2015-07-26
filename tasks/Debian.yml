@@ -2,8 +2,8 @@
 
 - name: Debian | Ensure required packages are installed
   apt:
-   name: '{{ mount_packages["Debian"][item.fstype] }}'
-   state: 'latest'
+    name: '{{ mount_packages["Debian"][item.fstype] }}'
+    state: 'latest'
   when: (item.fstype is string and item.fstype in ['cifs', 'nfs'])
   with_flattened:
     - mount_list
