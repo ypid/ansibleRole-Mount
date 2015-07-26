@@ -31,7 +31,7 @@ Example role include in play:
 Variable declaration:
 
 ```
-  mount:
+  mount_host_list:
    - src: "someserver:/share/vol1"
      dest: /mounts/vol1
      fstype: nfs
