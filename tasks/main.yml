@@ -4,6 +4,10 @@
     msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
   when: ansible_os_family not in ['Debian', 'Ubuntu']
 
+- name: Combine lists of mount definitions
+  set_fact:
+    mount_list_combined: '{{ mount + mount_list + mount_group_list + mount_host_list | default([]) }}'
+
 - name: Include Debian specific tasks
   include: Debian.yml
   when: ansible_os_family in ['Debian', 'Ubuntu']
@@ -29,17 +33,11 @@
     passno: '{{ item.passno|default(omit) }}'
     state: '{{ item.state|default("mounted") }}'
   when: (item.src is string)
-  with_flattened:
-    - mount_list
-    - mount_group_list
-    - mount_host_list
+  with_items: mount_list_combined
 
 - name: Ensure mount directories exist when manually mounted
   file:
     path: '{{ item.dest }}'
     state: 'directory'
   when: (item.state is string and item.state == 'present')
-  with_flattened:
-    - mount_list
-    - mount_group_list
-    - mount_host_list
+  with_items: mount_list_combined

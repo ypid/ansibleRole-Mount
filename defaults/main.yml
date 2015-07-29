@@ -13,6 +13,8 @@ mount_group_list:
 # "Host" mounts
 mount_host_list:
 
+# Other mounts (for example for role dependencies)
+mount: []
 
 mount_packages:
   Debian:

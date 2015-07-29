@@ -5,7 +5,4 @@
     name: '{{ mount_packages["Debian"][item.fstype] }}'
     state: 'latest'
   when: (item.fstype is string and item.fstype in ['cifs', 'nfs'])
-  with_flattened:
-    - mount_list
-    - mount_group_list
-    - mount_host_list
+  with_items: mount_list_combined
