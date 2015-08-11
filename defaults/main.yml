@@ -1,17 +1,19 @@
 ---
 
+# mount_list:
+#   - src: 'tmpfs'
+#     dest: '/tmp'
+#     fstype: 'tmpfs'
+#     opts: 'nodev,nosuid,size=50%'
+
 # "Global" mounts
-mount_list:
-  # - src: 'tmpfs'
-  #   dest: '/tmp'
-  #   fstype: 'tmpfs'
-  #   opts: 'nodev,nosuid,size=50%'
+mount_list: []
 
 # "Host group" mounts
-mount_group_list:
+mount_group_list: []
 
 # "Host" mounts
-mount_host_list:
+mount_host_list: []
 
 # Other mounts (for example for role dependencies)
 mount: []
